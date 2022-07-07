@@ -7,6 +7,7 @@ from certbot.plugins import dns_common
 _GandiConfig = namedtuple('_GandiConfig', ('api_key', 'sharing_id',))
 _BaseDomain = namedtuple('_BaseDomain', ('fqdn'))
 
+
 def get_config(api_key, sharing_id):
     return _GandiConfig(api_key=api_key, sharing_id=sharing_id)
 
@@ -32,6 +33,7 @@ def _headers(cfg):
 
 def _get_url(*segs):
     return 'https://dns.api.gandi.net/api/v5/{}'.format('/'.join(segs))
+
 
 def _request(cfg, method, segs, **kw):
     headers = _headers(cfg)
