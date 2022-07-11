@@ -2,7 +2,9 @@
 
 This is a plugin for [Certbot](https://certbot.eff.org/) that uses the Gandi
 LiveDNS API to allow [Gandi](https://www.gandi.net/)
-customers to prove control of a domain name.
+customers to prove control of a domain name. This is an alteration of that
+produced by Michael Porter and Yohann Leon allowing the user to store API 
+details using AWS System Manager (Parameter Store).
 
 ## Usage
 
@@ -12,21 +14,29 @@ customers to prove control of a domain name.
 
 2. Install the plugin using `pip install certbot-plugin-gandi`
 
-3. Create a `gandi.ini` config file with the following contents and apply `chmod 600 gandi.ini` on it:
-   ```
-   # live dns v5 api key
-   dns_gandi_api_key=APIKEY
+3. Create AWS parameters for the following contents (see [AWS Parameter Store](https://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-parameter-store.html)):
 
-   # optional organization id, remove it if not used
-   dns_gandi_sharing_id=SHARINGID
-   ```
-   Replace `APIKEY` with your Gandi API key and ensure permissions are set
-   to disallow access to other users.
+   * API key
+   * Sharing ID  - optional (Organisation ID)
 
-4. Run `certbot` and direct it to use the plugin for authentication and to use
+4. Set an environment variables referencing the parameter names used to store
+   the Gandi content.
+
+   ```commandline
+   export GANDI_API_REF=<aws_gandi_api_parameter>
+   export GANDI_SHARING_REF=<aws_gandi_sharing_parameter>
+   ```
+   
+   Replace the `<aws_gandi_api_parameter>` with the name of the parameter used
+   to store your Gandi API Key. 
+
+   Replace the `<aws_gandi_sharing_parameter>` with the name of the parameter
+   used to store your Gandi Sharing ID.
+
+6. Run `certbot` and direct it to use the plugin for authentication and to use
    the config file previously created:
    ```
-   certbot certonly --authenticator dns-gandi --dns-gandi-credentials /etc/letsencrypt/gandi/gandi.ini -d domain.com
+   certbot certonly --authenticator dns-gandi -d domain.com
    ```
    Add additional options as required to specify an installation plugin etc.
 

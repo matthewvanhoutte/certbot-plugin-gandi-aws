@@ -56,8 +56,8 @@ class Authenticator(dns_common.DNSAuthenticator):
             logger.warn('Unable to find or delete the DNS TXT record: %s', error)
 
     def _get_gandi_config(self):
-        api_ref = os.getenv('gandi_api_ref')
-        shar_ref = os.getenv('gandi_sharing_ref')
+        api_ref = os.getenv('GANDI_API_REF')
+        shar_ref = os.getenv('GANDI_SHARING_REF')
 
         if not api_ref:
             raise errors.PluginError('Must specify an API key')
