@@ -4,14 +4,14 @@ with open("README.md", "r") as fh:
     long_description = fh.read()
 
 setup(
-    name='certbot-plugin-gandi',
-    version='1.3.2',
+    name='certbot-plugin-gandi-aws',
+    version='0.0.1',
     author="Matthew Vanhoutte",
     author_email="bonsaichills@gmail.com",
     description="Certbot plugin for authentication using Gandi LiveDNS and using AWS to store API credentials",
     long_description=long_description,
     long_description_content_type="text/markdown",
-    url="https://github.com/matthewvanhoutte/certbot-plugin-gandi",
+    url="https://github.com/matthewvanhoutte/certbot-plugin-gandi-aws",
     packages=find_packages(),
     python_requires=' >=3.5.*',
     install_requires=[
@@ -21,8 +21,8 @@ setup(
     ],
     entry_points={
         'certbot.plugins': [
-            'dns = certbot_plugin_gandi.main:Authenticator',
-            'dns-gandi = certbot_plugin_gandi.main:Authenticator',
+            'dns = certbot_plugin_gandi_aws.main:Authenticator',
+            'dns-gandi = certbot_plugin_gandi_aws.main:Authenticator',
         ],
     },
     classifiers=[
