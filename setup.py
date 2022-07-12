@@ -4,7 +4,7 @@ with open("README.md", "r") as fh:
     long_description = fh.read()
 
 setup(
-    name='certbot-plugin-gandi-aws',
+    name='certbot-plugin-gandi',
     version='1.3.2',
     author="Matthew Vanhoutte",
     author_email="bonsaichills@gmail.com",
