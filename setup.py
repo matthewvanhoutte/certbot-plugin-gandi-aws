@@ -1,4 +1,7 @@
-from setuptools import setup, find_packages 
+from setuptools import setup, find_packages
+
+with open('LICENSE') as f:
+    license = f.read()
 
 with open("README.md", "r") as fh:
     long_description = fh.read()
@@ -11,6 +14,7 @@ setup(
     description="Certbot plugin for authentication using Gandi LiveDNS and using AWS to store API credentials",
     long_description=long_description,
     long_description_content_type="text/markdown",
+    license=license,
     url="https://github.com/matthewvanhoutte/certbot-plugin-gandi-aws",
     packages=find_packages(),
     python_requires=' >=3.5.*',
