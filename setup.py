@@ -8,7 +8,7 @@ with open("README.md", "r") as fh:
 
 setup(
     name='certbot-plugin-gandi-aws',
-    version='0.0.1',
+    version='1.0.0',
     author="Matthew Vanhoutte",
     author_email="bonsaichills@gmail.com",
     description="Certbot plugin for authentication using Gandi LiveDNS and using AWS to store API credentials",
@@ -30,7 +30,7 @@ setup(
         ],
     },
     classifiers=[
-        'Development Status :: 4 - Beta',
+        'Development Status :: 3 - Alpha',
         'Environment :: Plugins',
         'Intended Audience :: System Administrators',
         'License :: OSI Approved :: MIT License',
